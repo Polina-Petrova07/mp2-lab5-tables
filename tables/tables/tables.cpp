@@ -5,7 +5,6 @@
 #include "table.h"
 #include "tree.h"
 #include "hash.h"
-#include <fstream>
 
 int main()
 {
@@ -15,10 +14,7 @@ int main()
 	std::string s;
 	tablemas t1;
 	hashtab t2;
-	
-	std::ofstream out;
-	out.open("\Log.txt");
-	out << "logging" << std::endl;
+
 	std::cout << "Enter number of polynomials" << std::endl;
 	std::cin >> r;
 	for (int i = 0; i < r; i++)
@@ -204,7 +200,9 @@ int main()
 		}
 	}
 	//system("pause");
-/*tree t;
+
+/*
+tree t;
 List a;
 int k,p,c;
 std::cout << "Entering 2-nd polynomial" << std::endl;
@@ -229,10 +227,10 @@ for (int i = 0; i < k; i++)
 }
 pol b(a);
 rowRB* r = new rowRB(b);
-t.insert_case1(r, "aljgrawjg");
-//t.insert_case1(r, "ythghv");
-r->print();
-//t.print();*/
+t.insert_case1(r, "asdfgh");
+t.insert_case1(r, "qwerty");
+
+t.print();*/
 
 return 0;
 }

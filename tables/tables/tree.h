@@ -45,8 +45,8 @@ private:
 public:
 	tree()
 	{
-		rowRB* ph = new rowRB();
-		root = ph;
+		//rowRB* ph = new rowRB();
+		root = new rowRB();
 		size = 10;
 	}
 	struct rowRB* grandparent(rowRB *n)
@@ -81,7 +81,7 @@ public:
 		n = n->parent;
 
 	}
-	void insert_case1(struct rowRB *n,std::string s)
+	void insert_case1(struct rowRB *n, std::string s)
 	{
 		if (root->parent == NULL)
 		{
@@ -108,6 +108,7 @@ public:
 			g->col = color::RED;
 			insert_case1(g,s);
 			root->key = s;
+			root->polinom = n->polinom;
 		}
 		else
 			insert_case4(n,s);
@@ -120,6 +121,7 @@ public:
 			rotate_left(root->parent);
 			root = root->left;
 			root->key = s;
+			root->polinom = n->polinom;
 		}
 		else
 			if ((root == root->parent->left) && (root->parent == g->left))
@@ -127,6 +129,7 @@ public:
 				rotate_right(root->parent);
 				root = root->right;
 				root->key = s;
+				root->polinom = n->polinom;
 			}
 		insert_case5(n,s);
 	}
@@ -139,11 +142,13 @@ public:
 		{
 			rotate_right(g);
 			root->key = s;
+			root->polinom = n->polinom;
 		}
 		else
 		{
 			rotate_left(g);
 			root->key = s;
+			root->polinom = n->polinom;
 		}
 	}
 
@@ -249,11 +254,14 @@ public:
 	}
 	void print()
 	{
+		root->print();
+		/*
 		if (root->left == NULL) std::cout << "NULL";
 		else root->left->print();
 		std::cout << std::endl;
 		if (root->right == NULL) std::cout << "NULL";
 		else root->right->print();
+		*/
 	}
 	
 };

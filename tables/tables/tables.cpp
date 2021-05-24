@@ -7,7 +7,7 @@
 #include "hash.h"
 
 int main()
-{
+{/*
 	int r, j, k=0, p;
 	double c;
 	//List a;
@@ -199,9 +199,9 @@ int main()
 			break;
 		}
 	}
-	//system("pause");
+	//system("pause");*/
 
-/*
+
 tree t;
 List a;
 int k,p,c;
@@ -226,12 +226,16 @@ for (int i = 0; i < k; i++)
 	a.Insert_end(p, c);
 }
 pol b(a);
+
 rowRB* r = new rowRB(b);
-t.insert_case1(r, "asdfgh");
-t.insert_case1(r, "qwerty");
+t.insert("asdfgh",b);
+t.insert("qwerty",b);
 
-t.print();*/
-
+t.print();
+std::cout << std::endl;
+std::cout << std::endl;
+pol pp = t.search("qwerty");
+pp.print();
 return 0;
 }
 

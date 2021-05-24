@@ -42,13 +42,22 @@ class tree
 private:
 	rowRB* root;
 	int size;
+	//Node* root;
+	rowRB* nil_node;
 public:
-	tree()
+	explicit tree() {
+		this->nil_node = new rowRB();
+		this->nil_node->col = color::BLACK;
+		this->nil_node->parent = this->nil_node;
+		this->root = this->nil_node;
+	}
+
+	/*tree()
 	{
 		//rowRB* ph = new rowRB();
 		root = new rowRB();
 		size = 10;
-	}
+	}*/
 	struct rowRB* grandparent(rowRB *n)
 	{
 		if ((n != NULL) && (n->parent != NULL))
@@ -66,7 +75,7 @@ public:
 		else
 			return g->left;
 	}
-	void rotate_right(rowRB *n)
+	/*void rotate_right(rowRB *n)
 	{
 		n->parent = n->left;
 		n->left = n->parent->right;
@@ -81,13 +90,14 @@ public:
 		n = n->parent;
 
 	}
-	void insert_case1(struct rowRB *n, std::string s)
+/*	void insert_case1(struct rowRB *n, std::string s)
 	{
 		if (root->parent == NULL)
 		{
 			root->col = color::BLACK;
 			root->key = s;
 			root->polinom = n->polinom;
+			//root->parent!=NULL;
 		}
 		else
 			insert_case2(n,s);
@@ -151,6 +161,111 @@ public:
 			root->polinom = n->polinom;
 		}
 	}
+*/
+
+	void rotateLeft(rowRB* node) {
+		rowRB* temp = node->right;
+		node->right = temp->left;
+
+		if (temp->left != this->nil_node)
+			temp->left->parent = node;
+		temp->parent = node->parent;
+
+		if (node->parent == this->nil_node)
+			this->root = temp;
+		else if (node == node->parent->left)
+			node->parent->left = temp;
+		else
+			node->parent->right = temp;
+		temp->left = node;
+		node->parent = temp;
+	}
+
+	void rotateRight(rowRB* node) {
+		rowRB* temp = node->left;
+		node->left = temp->right;
+
+		if (temp->right != this->nil_node)
+			temp->right->parent = node;
+		temp->parent = node->parent;
+
+		if (node->parent == this->nil_node)
+			this->root = temp;
+		else if (node == node->parent->right)
+			node->parent->right = temp;
+		else
+			node->parent->left = temp;
+		temp->right = node;
+		node->parent = temp;
+	}
+
+	void insert(std::string s, pol value) {
+		rowRB* node = new rowRB();
+		rowRB* y = this->nil_node;
+		rowRB* x = this->root;
+		while (x != this->nil_node) {
+			y = x;
+			if (node->polinom.a.head < x->polinom.a.head)
+				x = x->left;
+			else
+				x = x->right;
+		}
+
+		node->parent = y;
+		if (y == this->nil_node)
+			this->root = node;
+		else if (node->polinom.a.head < y->polinom.a.head)
+			y->left = node;
+		else
+			y->right = node;
+		node->key = s;
+		node->left = this->nil_node;
+		node->right = this->nil_node;
+		node->col = color::RED;
+		insertFixup(node);
+	}
+	void insertFixup(rowRB* node) {
+		rowRB* temp;
+		while (node->parent->col == color::RED) {
+			if (node->parent == node->parent->parent->left) {
+				temp = node->parent->parent->right;
+				if (temp->col == color::RED) {
+					node->parent->col = color::BLACK;
+					temp->col = color::BLACK;
+					node->parent->parent->col = color::RED;
+					node = node->parent->parent;
+				}
+				else {
+					if (node == node->parent->right) {
+						node = node->parent;
+						rotateLeft(node);
+					}
+					node->parent->col = color::BLACK;
+					node->parent->parent->col = color::RED;
+					rotateRight(node->parent->parent);
+				}
+			}
+			else {
+				temp = node->parent->parent->left;
+				if (temp->col == color::RED) {
+					node->parent->col = color::BLACK;
+					temp->col = color::BLACK;
+					node->parent->parent->col = color::RED;
+					node = node->parent->parent;
+				}
+				else {
+					if (node == node->parent->left) {
+						node = node->parent;
+						rotateRight(node);
+					}
+					node->parent->col = color::BLACK;
+					node->parent->parent->col = color::RED;
+					rotateLeft(node->parent->parent);
+				}
+			}
+		}
+		this->root->col = color::BLACK;
+	}
 
 	struct rowRB* sibling(struct rowRB *n)
 	{
@@ -172,9 +287,9 @@ public:
 			n->parent->col = color::RED;
 			s->col = color::BLACK;
 			if (n = n->parent->left)
-				rotate_left(n->parent);
+				rotateLeft(n->parent);
 			else
-				rotate_right(n->parent);
+				rotateRight(n->parent);
 		}
 		delete_case3(n);
 	}
@@ -209,14 +324,14 @@ public:
 			{
 				s->col = color::RED;
 				s->left->col = color::BLACK;
-				rotate_right(s);
+				rotateRight(s);
 			}
 			else
 			{
 				if ((n == n->parent->right) && (s->left->col == color::BLACK) && (s->right->col == color::RED))
 					s->col = color::RED;
 				s->right->col = color::BLACK;
-				rotate_left(s);
+				rotateLeft(s);
 			}
 		}
 		delete_case6(n);
@@ -229,15 +344,15 @@ public:
 		if (n == n->parent->left)
 		{
 			s->right->col = color::BLACK;
-			rotate_left(n->parent);
+			rotateLeft(n->parent);
 		}
 		else
 		{
 			s->left->col = color::BLACK;
-			rotate_right(n->parent);
+			rotateRight(n->parent);
 		}
 	}
-	pol search(rowRB *&p,std::string s)
+	pol search(std::string s)
 	{
 		if (root->key == s)
 		{
@@ -245,11 +360,11 @@ public:
 		}
 		if (s < root->key)
 		{
-			return search(root->left, s);
+			return search(s);
 		}
 		else
 		{
-			return search(root->right, s);
+			return search(s);
 		}
 	}
 	void print()

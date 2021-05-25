@@ -1,0 +1,23 @@
+﻿  test.cpp
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(9,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(9,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(8,6): warning C4930: row r(void): функция с прототипом не вызвана (предполагалось определение переменной?)
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(19,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(19,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(31,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(31,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(36,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(36,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(35,11): warning C4930: tablemas t(void): функция с прототипом не вызвана (предполагалось определение переменной?)
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(47,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(47,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(157,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(157,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(156,10): warning C4930: hashRow r(void): функция с прототипом не вызвана (предполагалось определение переменной?)
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(162,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(162,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(172,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "ASSERT_NO_THROW"
+C:\Users\user\mp2-lab5-tables\tables\tableTests\test.cpp(172,2): warning C4003: недостаточно аргументов для вызова макроса, подобного функции, "GTEST_SUPPRESS_UNREACHABLE_CODE_WARNING_BELOW_"
+C:\Users\user\mp2-lab5-tables\tables\tables\polinom.h(230): warning C4715: pol::operator==: значение возвращается не при всех путях выполнения
+C:\Users\user\mp2-lab5-tables\tables\tables\hash.h(129): warning C4715: hashtab::search: значение возвращается не при всех путях выполнения
+  tableTests.vcxproj -> C:\Users\user\mp2-lab5-tables\tables\x64\Release\tableTests.exe

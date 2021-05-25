@@ -7,7 +7,7 @@
 #include "hash.h"
 
 int main()
-{/*
+{
 	int r, j, k=0, p;
 	double c;
 	//List a;
@@ -60,7 +60,7 @@ int main()
 		std::cout << "2 Search" << std::endl;
 		std::cout << "3.Change" << std::endl;
 		std::cout << "4.Show tables" << std::endl;
-		std::cout << "0.Exit" << std::endl;
+		std::cout << "0.Exit" << std::endl << std::endl;
 		std::cin >> k;
 		switch (k)
 		{
@@ -188,7 +188,7 @@ int main()
 		}
 		case 4:
 		{
-			std::cout << "tables:" << std::endl;
+			std::cout << "tables:" << std::endl << std::endl;
 			t1.print();
 			std::cout << std::endl;
 			std::cout << "=====================================" << std::endl;
@@ -199,9 +199,9 @@ int main()
 			break;
 		}
 	}
-	//system("pause");*/
+	//system("pause");
 
-
+/*
 tree t;
 List a;
 int k,p,c;
@@ -230,13 +230,16 @@ pol b(a);
 rowRB* r = new rowRB(b);
 t.insert("asdfgh",b);
 t.insert("qwerty",b);
+t.insert("lkjhgf", b);
+hashtab ht;
+ht.insert(b,"jkfgh8798dsfhsk");
+ht.print();
+std::cout << std::endl;
+//int y=ht.getPos(hashFunc("jkfgh8798dsfhsk"));
+std::cout << y;
+//t.print();
+std::cout << std::endl << std::endl;*/
 
-t.print();
-std::cout << std::endl;
-std::cout << std::endl;
-pol pp = t.search("qwerty");
-pp.print();
-return 0;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

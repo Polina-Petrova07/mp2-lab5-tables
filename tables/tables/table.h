@@ -15,9 +15,9 @@ struct row
 public:
 	std::string key;
 	pol polinom;
+	bool empty;
 
-
-	row() {};
+	row() { empty = true; };
 	row(pol b, std::string s)
 	{
 		polinom = b;
@@ -46,47 +46,56 @@ public:
 		count_d = 0;
 		count_i = 0;
 	}
-	void insert(pol b, std::string s)
+	inline void insert(pol b, std::string s)
 	{
 		row r(b, s);
 		//count_i = 0;
 		count_i++;
 		if (count + 1 > MAXSIZE)
 			throw "table is full";
-		mas[count++] = r;
+		int pos = count++;
+		mas[pos] = r;
+		mas[pos].empty = false;
 	}
-	pol search(std::string s)
+	inline pol search(std::string s)
 	{
 		count_s = 0;
+		count_s++;
 		for (row r : mas)
 		{
-			count_s++;
 			if (r.key == s)
 				return r.polinom;
 		}
 		throw "not found";
 	}
-	void del(std::string s)
+	inline void del(std::string s)
 	{
+		if (!count_i)
+			throw "table is empty";
 		count_d = 0;
+		count_d++;
 		row r(search(s), s);
 		for (int i=0;i<MAXSIZE;i++)
 			if (mas[i] == r)
 			{
 				mas[i] = mas[count--];
-				count_d++;
+				//count_d++;
+			
 			}
 	}
 	void print()
 	{
 		if (!count)
 			throw "table is empty";
-		for (int i = 0; i < count; i++)
+		for (int i = 0; i < MAXSIZE; i++)
 		{
-			//std::cout << i << "   ";
-			std::cout << mas[i].key << "   ";
-			mas[i].polinom.print();
-			std::cout << std::endl;
+			if (mas[i].empty == false)
+			{
+				//std::cout << i << "   ";
+				std::cout << mas[i].key << "   ";
+				mas[i].polinom.print();
+				std::cout << std::endl;
+			}
 		}
 	}
 	row* get_vec()
@@ -97,6 +106,10 @@ public:
 	{
 		//delete[]mas;
 		this->count = 0;
+	}
+	int getCount()
+	{
+		return count;
 	}
 };
 

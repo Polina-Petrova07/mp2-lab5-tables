@@ -35,6 +35,10 @@ struct rowRB
 	{
 		polinom = p;
 	}
+	rowRB(pol p, std::string s):rowRB(p)
+	{
+		key = s;
+	}
 };
 
 class tree
@@ -89,8 +93,8 @@ public:
 		n->parent->left = n;
 		n = n->parent;
 
-	}
-/*	void insert_case1(struct rowRB *n, std::string s)
+	}*/
+	void insert_case1(struct rowRB *n, std::string s)
 	{
 		if (root->parent == NULL)
 		{
@@ -99,10 +103,10 @@ public:
 			root->polinom = n->polinom;
 			//root->parent!=NULL;
 		}
-		else
-			insert_case2(n,s);
+		//else
+			//insert_case2(n,s);
 	}
-	void insert_case2(struct rowRB *n,std::string s)
+	/*void insert_case2(struct rowRB *n,std::string s)
 	{
 		if (root->parent->col != color::BLACK)
 		    insert_case3(n,s);
@@ -163,7 +167,8 @@ public:
 	}
 */
 
-	void rotateLeft(rowRB* node) {
+	void rotateLeft(rowRB* node) 
+	{
 		rowRB* temp = node->right;
 		node->right = temp->left;
 
@@ -181,7 +186,8 @@ public:
 		node->parent = temp;
 	}
 
-	void rotateRight(rowRB* node) {
+	void rotateRight(rowRB* node) 
+	{
 		rowRB* temp = node->left;
 		node->left = temp->right;
 
@@ -198,8 +204,49 @@ public:
 		temp->right = node;
 		node->parent = temp;
 	}
-
-	void insert(std::string s, pol value) {
+	inline void add(std::string, pol value)
+	{
+		rowRB* cur = this->root;
+		rowRB* prev = 0;
+		while (true)
+		{
+			if (cur == 0)
+			{
+				cur = new rowRB(value);
+				cur->parent = prev;
+				if (prev->polinom.a.head > value.a.head)
+				{
+					prev->left = cur;
+				}
+				else
+				{
+					prev->right = cur;
+				}
+				//cur->insert_case1(cur);
+				while (cur->parent)
+				{
+					cur = cur->parent;
+				}
+				root = cur;
+				return;
+			}
+			if (value.a.head < cur->polinom.a.head)
+			{
+				prev = cur;
+				cur = cur->left;
+				continue;
+			}
+			if (value.a.head > cur->polinom.a.head)
+			{
+				prev = cur;
+				cur = cur->right;
+				continue;
+			}
+		}   
+		
+	}
+	void insert(std::string s, pol value) 
+	{
 		rowRB* node = new rowRB();
 		rowRB* y = this->nil_node;
 		rowRB* x = this->root;
@@ -219,12 +266,14 @@ public:
 		else
 			y->right = node;
 		node->key = s;
+		node->polinom = value;
 		node->left = this->nil_node;
 		node->right = this->nil_node;
 		node->col = color::RED;
 		insertFixup(node);
 	}
-	void insertFixup(rowRB* node) {
+	void insertFixup(rowRB* node) 
+	{
 		rowRB* temp;
 		while (node->parent->col == color::RED) {
 			if (node->parent == node->parent->parent->left) {

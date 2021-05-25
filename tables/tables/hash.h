@@ -70,7 +70,7 @@ public:
 		//step = 0;
 	}
 
-	void insert(pol p, std::string key)
+	inline void insert(pol p, std::string key)
 	{
 		hashRow hr (p, key);
 		//count_i = 0;
@@ -117,17 +117,17 @@ public:
 			}
 		}
 	}
-	pol search(std::string s)
+	inline pol search(std::string s)
 	{
 		count_s = 0;
+		count_s++;
 		for (hashRow hr : mas)
 		{
-			count_s++;
 			if (hr.key == s)
 				return hr.polinom;
 		}
 	}
-	void del(std::string s)
+	inline void del(std::string s)
 	{
 		count_d = 0;
 		
@@ -156,6 +156,18 @@ public:
 				std::cout << std::endl;
 			}
 		}
+	}
+	int getPos(int k)
+	{
+		return hashFunc(mas[k].key);
+	}
+	bool getPosbool(int k)
+	{
+		return mas[hashFunc(mas[k].key)].empty;
+	}
+	int getcounth()
+	{
+		return count;
 	}
 	~hashtab()
 	{

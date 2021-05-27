@@ -80,7 +80,7 @@ public:
 			{
 				mas[i] = mas[count--];
 				//count_d++;
-			
+				//count--;
 			}
 	}
 	void print()

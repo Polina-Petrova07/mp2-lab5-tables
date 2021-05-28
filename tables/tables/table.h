@@ -76,11 +76,11 @@ public:
 		count_d++;
 		row r(search(s), s);
 		for (int i=0;i<MAXSIZE;i++)
-			if (mas[i] == r)
+			if (mas[i].key == r.key)
 			{
-				mas[i] = mas[count--];
+				mas[i].empty = true;// mas[count--];
 				//count_d++;
-				//count--;
+				count--;
 			}
 	}
 	void print()
